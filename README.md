@@ -9,6 +9,7 @@
 조건3. Ref를 사용하기보다 최대한 props, state, component life cycle API을 이용해야합니다.
 조건4. create-react-app 또는 첨부된 reac-admin-theme를 이용해야합니다.
 조건5. 코드의 관리는 git을 이용해야합니다.
+
 ```
 
 
@@ -20,6 +21,29 @@
 
 ```
 
+
+## 요구사항
+
+```
+1.
+로그인 - 자유형식(기획안 없음)
+로그인 페이지 및 기능
+로그인이 가능한 페이지를 작성합니다.
+로그인 API
+Method : POST
+url : http://cms-staging-api.playwings.co.kr:8080/oauth/token
+parameter
+ ‘grant_type’:‘password’
+ ‘username’ : id
+ ’password’ : password
+headers
+"Authorization" : "Basic Y2xpZW50d2ViOjEyMzQ1Ng==“
+"Content-Type": "application/x-www-form-urlencoded"
+
+
+ID : admin:skilltest@playwings.co.kr
+PW : 1q2w3e4r5t
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -270,7 +294,7 @@ You would need to install an ESLint plugin for your editor first. Then, add a fi
 
 ```js
 {
-  "extends": "react-app"
+  "extends": components
 }
 ```
 
