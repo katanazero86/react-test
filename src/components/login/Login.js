@@ -9,6 +9,9 @@ import * as actions from '../../actions';
 // axios
 import axios from 'axios';
 
+// hoc
+import withAuth from '../../hoc/withAuth';
+
 const propTypes = {
     id: PropTypes.string,
     password: PropTypes.string,
@@ -39,28 +42,39 @@ class Login extends Component {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then((response) => {
-            console.log('인증 토큰!!')
-            console.log(response)
+            console.log('성공!!');
+            console.log(response);
+
+            localStorage.setItem('access_token', response.data.access_token);
+            localStorage.setItem('refresh_token', response.data.refresh_token);
+            localStorage.setItem('token_type', response.data.token_type);
+            this.props.history.push('/deal');
+
         }).catch((ex) => {
-            console.log('실패!')
-            console.log(ex)
+            console.log('실패!');
+            console.log(ex);
         });
     }
 
     render() {
         return (
-            <div className="login-box">
-                <div className="form-group">
-                    <label htmlFor="user">ID:</label>
-                    <input type="text" className="form-control" id="user" value={this.props.id}
-                           onChange={this.props.handleChangeId}/>
+            <div className="App">
+                <header className="App-header">
+                    <h1 className="App-title">Welcome to This Page</h1>
+                </header>
+                <div className="login-box">
+                    <div className="form-group">
+                        <label htmlFor="user">ID:</label>
+                        <input type="text" className="form-control" id="user" value={this.props.id}
+                               onChange={this.props.handleChangeId}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="pwd">Password:</label>
+                        <input type="password" className="form-control" id="pwd" value={this.props.password}
+                               onChange={this.props.handleChangePassword}/>
+                    </div>
+                    <button type="button" className="btn btn-primary" onClick={this.userLogin}>LOGIN</button>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="pwd">Password:</label>
-                    <input type="password" className="form-control" id="pwd" value={this.props.password}
-                           onChange={this.props.handleChangePassword}/>
-                </div>
-                <button type="button" className="btn btn-primary" onClick={this.userLogin}>LOGIN</button>
             </div>
         )
     }
@@ -72,7 +86,7 @@ const mapStateToProps = (state) => {
     return {
         id: state.login.id,
         password: state.login.password,
-        grant_type : state.login.grant_type
+        grant_type: state.login.grant_type
     };
 };
 
@@ -96,4 +110,4 @@ const mapDispatchToProps = (dispatch) => {
 
 Login.propTypes = propTypes;
 Login = connect(mapStateToProps, mapDispatchToProps)(Login);
-export default Login;
+export default withAuth(Login);

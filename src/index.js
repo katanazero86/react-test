@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducers from './reducers';
@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import registerServiceWorker from './registerServiceWorker';
 
 // components
-import App from './components/App';
+import Login from './components/login/Login';
 import Deal from './components/deal/Deal';
 
 
@@ -19,8 +19,10 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <Route path="/" exact component={App}/>
-                <Route path="/deal" component={Deal}/>
+                <Switch>
+                    <Route path="/" exact component={Login}/>
+                    <Route path="/deal" component={Deal}/>
+                </Switch>
             </div>
         </BrowserRouter>
     </Provider>, document.getElementById('root'));
