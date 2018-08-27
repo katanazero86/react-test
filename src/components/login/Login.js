@@ -15,7 +15,8 @@ import withAuth from '../../hoc/withAuth';
 const propTypes = {
     id: PropTypes.string,
     password: PropTypes.string,
-    grant_type: PropTypes.string
+    grant_type: PropTypes.string,
+    onLogin: PropTypes.bool.isRequired
 };
 
 class Login extends Component {
@@ -23,6 +24,10 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.userLogin = this.userLogin.bind(this);
+
+        if(this.props.onLogin === true){
+            this.props.history.push('/deal');
+        }
     }
 
     userLogin() {
