@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom'
 
 const withAuth = (WrappedComponent) => {
 
@@ -24,7 +23,7 @@ const withAuth = (WrappedComponent) => {
         render() {
             const onLogin = this.state.onLogin;
             return (
-                <WrappedComponent {...this.props} onLogin={onLogin} />
+                <WrappedComponent {...this.props} onLogin={onLogin}/>
             )
         }
     }

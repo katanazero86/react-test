@@ -63,22 +63,26 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <h1 className="App-title">Welcome to This Page</h1>
+            <div className="login-app">
+                <header className="login-app-header">
+                    <h3>Welcome to This Page</h3>
                 </header>
                 <div className="login-box">
+                    <div className="login-logo-box">
+                        <img src={require('./login_logo.png')} className="login-logo" alt="logo" />
+                        <p>USER LOGIN</p>
+                    </div>
                     <div className="form-group">
                         <label htmlFor="user">ID:</label>
                         <input type="text" className="form-control" id="user" value={this.props.id}
-                               onChange={this.props.handleChangeId}/>
+                               onChange={this.props.handleChangeId} placeholder="ID"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="pwd">Password:</label>
                         <input type="password" className="form-control" id="pwd" value={this.props.password}
-                               onChange={this.props.handleChangePassword}/>
+                               onChange={this.props.handleChangePassword} placeholder="Password"/>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={this.userLogin}>LOGIN</button>
+                    <button type="button" className="btn btn-dark" onClick={this.userLogin}>LOGIN</button>
                 </div>
             </div>
         )

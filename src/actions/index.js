@@ -17,3 +17,10 @@ export function changePassword() {
         type: types.CHANGE_PASSWORD
     }
 }
+
+export function getDeal(response) {
+    return {
+        type: types.GET_DEAL,
+        value: response,
+    }
+}
