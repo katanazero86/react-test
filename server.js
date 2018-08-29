@@ -11,7 +11,8 @@ app.use(serveStatic(__dirname + "/build"));
 app.use(helmet());
 app.use(hpp());
 
-app.listen(port, function () {
+
+app.listen(port, '0.0.0.0', function () {
     console.log('server started '+ port);
 });
 
