@@ -5,7 +5,7 @@ const hpp = require('hpp');
 
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 app.use(serveStatic(__dirname + "/build"));
 app.use(helmet());
