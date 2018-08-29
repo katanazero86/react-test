@@ -12,7 +12,6 @@ const withAuth = (WrappedComponent) => {
         }
 
         componentWillMount() {
-            console.log(localStorage.access_token);
             if (localStorage.access_token !== '' && localStorage.access_token !== undefined) {
                 this.setState({
                     onLogin: true
